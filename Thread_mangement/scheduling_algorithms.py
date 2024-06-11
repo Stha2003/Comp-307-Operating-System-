@@ -1,6 +1,15 @@
 import random
 import time
 
+def simulate_fcfs(customers):
+    for customer in customers:
+        service_time = random.randint(1, 5)
+        if customer.start_time is None:
+            customer.start_time = time.time()
+        time.sleep(service_time)
+        customer.end_time = time.time()
+        print(f"Customer {customer.id} serviced for {service_time} seconds")
+
 def simulate_sjf(customers):
     customers = sorted(customers, key=lambda x: random.randint(1, 5))
     for customer in customers:
